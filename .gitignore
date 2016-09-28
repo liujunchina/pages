@@ -1,0 +1,10 @@
+.idea/
+.settings/
+.buildpath
+.project
+
+node_modules/
+debug/
+build/
+dist/
+.gitignore

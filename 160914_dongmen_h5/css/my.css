@@ -1,0 +1,257 @@
+html,body{
+    height: 100%;
+    overflow: hidden;
+}
+body{
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.bg{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+ /*start */
+ .swiper-container{
+    width: 100%;
+    height: 100%;
+}
+.my-content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.my-content>.in-bg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.my-content .bg-position-middle-center{
+    background-position: 50% 50%;
+}
+.my-content .bg-position-top-center{
+    background-position: 50% 0;
+}
+
+.my-content .bg-repeat-no{
+    background-repeat: no-repeat;
+}
+
+.my-content .bg-size-cover{
+    background-size: cover;
+}
+.audio-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 52px 26px;
+    background-image: url('../images/audio-btn5.png');
+    background-position: 26px 0;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 99;
+}
+.help-up {
+    position: absolute;
+    z-index: 1001;
+    width: 30px;
+    height: 16px;
+    background-size: 30px 16px;
+    background-image: url(../images/swiper_arrow.png);
+    left: 50%;
+    margin-left: -15px;
+    bottom: 30px;
+    -webkit-animation-name: help-up;
+    animation-name: help-up;
+}
+.animated-infinite {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+/*--------   fa-spin start  --------*/
+.fa-spin {
+    -webkit-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear;
+    background-position: 0 0;
+}
+
+@-moz-keyframes spin {
+    0% {
+        -moz-transform:rotate(0deg);
+    }
+    100% {
+        -moz-transform:rotate(359deg);
+    }
+}@-webkit-keyframes spin {
+     0% {
+         -webkit-transform:rotate(0deg);
+     }
+     100% {
+         -webkit-transform:rotate(359deg);
+     }
+ }@-o-keyframes spin {
+      0% {
+          -o-transform:rotate(0deg);
+      }
+      100% {
+          -o-transform:rotate(359deg);
+      }
+  }@-ms-keyframes spin {
+       0% {
+           -ms-transform:rotate(0deg);
+       }
+       100% {
+           -ms-transform:rotate(359deg);
+       }
+   }@keyframes spin {
+        0% {
+            transform:rotate(0deg);
+        }
+        100% {
+            transform:rotate(359deg);
+        }
+    }
+/*--------   fa-spin start  --------*/
+
+
+/*--------   help-up start  -----------------------------------*/
+@-webkit-keyframes help-up {
+    0% {
+        -webkit-transform:translateY(42px);
+        transform:translateY(42px);
+        opacity:0;
+    }
+    60% {
+        -webkit-transform:translateY(12px);
+        transform:translateY(12px);
+        opacity:1;
+    }
+    100% {
+        -webkit-transform:translateY(0px);
+        transform:translateY(0px);
+        opacity:0;
+    }
+}@keyframes help-up {
+     0% {
+         -webkit-transform:translateY(42px);
+         transform:translateY(42px);
+         opacity:0;
+     }
+     60% {
+         -webkit-transform:translateY(12px);
+         transform:translateY(12px);
+         opacity:1;
+     }
+     100% {
+         -webkit-transform:translateY(0px);
+         transform:translateY(0px);
+         opacity:0;
+     }
+ }
+.section .animation-flash,.section .animation-bounceInFromRight0{
+    opacity: 0;
+}
+.font-text{
+    position: absolute;
+    color: #FFF;
+    letter-spacing: 2px;
+}
+.font-text>img{
+    width: 100%;
+    vertical-align: top;
+    height: auto;
+}
+.backdrop{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999999;
+}
+.backdrop .backdrop-body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.5);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin: -40px 0 0 -75px;
+    padding-top:10px;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.pre-img{
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 5%;
+    display: none;
+}
+.tip-img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events:none;
+}
+.tip-img .tip-content{
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    -webkit-transform: scale(1.04);
+    -moz-transform: scale(1.04);
+    -ms-transform: scale(1.04);
+    -o-transform: scale(1.04);
+    transform: scale(1.04);
+    border: 2px dashed #D71922;
+}
+.tip-img .txt{
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 0;
+    text-align: center;
+    font-size: 22px;
+}
+.img-wrap{
+    position: relative;
+
+}
+
+.img-wrap img{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+}
