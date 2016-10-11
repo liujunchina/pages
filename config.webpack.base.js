@@ -61,7 +61,7 @@ function getEntry(globPath, pathDir) {
         templates[pathname] = {
             skin:pkg.skin,
             chunks: [
-                'common/vue',
+                // 'common/vue',
                 'common/common-lib',
                 'webpack/' + outFileName,
             ],
@@ -131,11 +131,11 @@ module.exports=function (options) {
 
                 path.resolve(__dirname, 'src/sass/common.scss')
             ],
-            'common/vue': [
-                'vue',
-                'vue-router',
-                path.resolve(__dirname, 'src/commonjs/filters.js'), // Vue过滤器
-            ]
+            // 'common/vue': [
+            //     'vue',
+            //     'vue-router',
+            //     path.resolve(__dirname, 'src/commonjs/filters.js'), // Vue过滤器
+            // ]
         }),
         output: {
             path: path.join(__dirname, _path),
@@ -213,8 +213,13 @@ module.exports=function (options) {
             }
         },
         plugins: [
+            // new webpack.optimize.CommonsChunkPlugin({
+            //     names: ['common/vue', 'common/common-lib'],
+            //     minChunks: Infinity
+            // }),
+
             new webpack.optimize.CommonsChunkPlugin({
-                names: ['common/vue', 'common/common-lib'],
+                names: ['common/common-lib'],
                 minChunks: Infinity
             }),
 

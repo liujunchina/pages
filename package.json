@@ -6,7 +6,7 @@
   "config": {
     "buildDir": "./build/",
     "devHost": "localhost",
-    "devPort": 3001
+    "devPort": 1008
   },
   "skin": "darkblue",
   "gulpConfig": {
