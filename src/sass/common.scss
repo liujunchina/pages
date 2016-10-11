@@ -1,0 +1,47 @@
+@import "mixins";
+@import "reset";
+@import "base";
+@import "btn";
+
+html,body {
+  background: #f4f4f4;
+}
+body{
+  max-width: 750px;
+  margin: auto;
+  background-color: #ffffff;
+}
+body,h1, h2, h3, h4, h5, h6{
+  font-family: $font-face;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.tc{
+  text-align: center;
+}
+
+.form{
+  .form-group{
+    margin-bottom: 15px;
+  }
+  .form-control{
+    border: 1px solid red;
+    font-size: 22px;
+    padding: 4px;
+    font-weight: normal;
+    color: #333;
+    background-color: #fff;
+    box-shadow: none;
+  }
+  .none-border{
+    //border:none;
+  }
+  .form-label{
+    font-size: 30px;
+    color: #8e8e92;
+    margin-right: 20px;
+  }
+}

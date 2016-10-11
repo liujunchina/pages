@@ -1,0 +1,13 @@
+$font-face: "tahoma,arial", "Hiragino Sans GB", "WenQuanYi Micro Hei", "微软雅黑", "宋体", "sans-serif";
+
+@mixin font-dpr($font-size){
+  font-size: $font-size; /*no*/
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2; /*no*/
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3; /*no*/
+  }
+}
