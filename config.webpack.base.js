@@ -125,7 +125,7 @@ module.exports=function (options) {
         entry: Object.assign(entries, {
             // 用到什么公共lib css（例如jquery.js），就把它加进common去，目的是将公用库单独提取打包
             'common/common-lib': [
-                // 'jquery',  // jquery
+                'jquery',  // jquery
                 'cookie',  // cookie
                 'base',    // 基础方法
 
