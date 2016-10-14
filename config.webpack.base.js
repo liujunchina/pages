@@ -165,11 +165,19 @@ module.exports=function (options) {
                 },
                 {
                     test: /\.(png|jpg)$/,
-                    loader: 'url-loader?limit=8192&name=images/[name]-[hash].[ext]'
+                    loader: 'url-loader?limit=4096&name=images/[name]-[hash].[ext]'
                 },
                 {
                     test: /\.html$/,
-                    loader: "html?-minimize" //避免压缩html,https://github.com/webpack/html-loader/issues/50
+                    loader: "html",
+                    query: {
+                        minimize: false,    // 不开启压缩html
+                        removeComments: true,
+                        collapseWhitespace: false, //删除空白符与换行符
+                        // Teach html-minifier about Angular 2 syntax
+                        customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ,[/\@[^=]*/, /\s?/,/\{\{(#|\^)[^}]+\}\}/,/\{\{\/[^}]+\}\}/,/\{\% if[^}]+\%\}/,/\{\%[^}]+endif \%\}/]],
+                        customAttrAssign: [ /\)?\]?=/ ],
+                    }
                 },
                 {
                     test: /\.(woff|woff2|ttf|eot|svg)(\?t=[0-9]\.[0-9]\.[0-9])?$/,
@@ -201,6 +209,7 @@ module.exports=function (options) {
             alias: {
                 'lib': path.resolve(__dirname, 'src/lib'),
                 'commonjs': path.resolve(__dirname, 'src/commonjs'),
+                'common': path.resolve(__dirname, 'src/common'),
                 'scss': path.resolve(__dirname, 'src/sass'),
                 "components": path.resolve(__dirname, 'src/components'),
                 "images": path.resolve(__dirname, 'src/images'),
