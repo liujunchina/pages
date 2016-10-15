@@ -55,8 +55,5 @@ var mySwiper = new Swiper('#j_wrapper', {
             es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
             //}
         }
-
     }
-
 });
-

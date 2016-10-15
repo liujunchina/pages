@@ -28,7 +28,7 @@ var webpackClient='webpack-dev-server/client?http://'+pkg.config.devHost+':'+pkg
  * @param pathDir: str 对比路径
  * @returns {{}}
  */
-function getEntry(globPath, pathDir) {
+function getEntry(globPath, pathDir,isDebug) {
     var files = glob.sync(globPath);
     var entries = {},
         templates = {},
@@ -71,17 +71,22 @@ function getEntry(globPath, pathDir) {
             // chunksSortMode: 'dependency',
             chunksSortMode: 'dependency',
             hash: false,
+        };
+
+        if(!isDebug){
             /*
              * 压缩这块，调用了html-minify，会导致压缩时候的很多html语法检查问题，
              * 如在html标签属性上使用{{...}}表达式，很多情况下并不需要在此配置压缩项，
              * 另外，UglifyJsPlugin会在压缩代码的时候连同html一起压缩。
              * 为避免压缩html，需要在html-loader上配置'html?-minimize'，见loaders中html-loader的配置。
              */
-
-            // minify: { //压缩HTML文件
-            //     removeComments: true, //移除HTML中的注释
-            //     collapseWhitespace: false //删除空白符与换行符
-            // }
+            templates[pathname]['minify'] = { //压缩HTML文件
+                removeComments: true, //移除HTML中的注释
+                collapseWhitespace: true, //删除空白符与换行符
+                // Teach html-minifier about Angular 2 syntax
+                customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ,[/\@[^=]*/, /\s?/,/\{\{(#|\^)[^}]+\}\}/,/\{\{\/[^}]+\}\}/,/\{\% if[^}]+\%\}/,/\{\%[^}]+endif \%\}/]],
+                customAttrAssign: [ /\)?\]?=/ ],
+            };
         }
     }
     return {
@@ -97,7 +102,7 @@ module.exports=function (options) {
     //生成路径字符串
     var _path = pkg.config.buildDir;
 
-    var allEntries = getEntry('src/pages/**/*.js', 'src/pages/');
+    var allEntries = getEntry('src/pages/**/*.js', 'src/pages/',DEBUG);
     var htmlWebpackPluginConfig = (function (templates) {
         var config = [];
         for(var key in templates){
@@ -125,7 +130,7 @@ module.exports=function (options) {
         entry: Object.assign(entries, {
             // 用到什么公共lib css（例如jquery.js），就把它加进common去，目的是将公用库单独提取打包
             'common/common-lib': [
-                'jquery',  // jquery
+                // 'jquery',  // jquery
                 'cookie',  // cookie
                 'base',    // 基础方法
 
@@ -172,11 +177,11 @@ module.exports=function (options) {
                     loader: "html",
                     query: {
                         minimize: false,    // 不开启压缩html
-                        removeComments: true,
-                        collapseWhitespace: false, //删除空白符与换行符
-                        // Teach html-minifier about Angular 2 syntax
-                        customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ,[/\@[^=]*/, /\s?/,/\{\{(#|\^)[^}]+\}\}/,/\{\{\/[^}]+\}\}/,/\{\% if[^}]+\%\}/,/\{\%[^}]+endif \%\}/]],
-                        customAttrAssign: [ /\)?\]?=/ ],
+                        // removeComments: true,
+                        // collapseWhitespace: false, //删除空白符与换行符
+                        // // Teach html-minifier about Angular 2 syntax
+                        // customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ,[/\@[^=]*/, /\s?/,/\{\{(#|\^)[^}]+\}\}/,/\{\{\/[^}]+\}\}/,/\{\% if[^}]+\%\}/,/\{\%[^}]+endif \%\}/]],
+                        // customAttrAssign: [ /\)?\]?=/ ],
                     }
                 },
                 {
@@ -218,7 +223,7 @@ module.exports=function (options) {
                 'vue-router':path.resolve(__dirname,'src/lib/vue-router.js'),
                 'base':path.resolve(__dirname, 'src/commonjs/base.js'),
                 'cookie':path.resolve(__dirname, 'src/lib/cookie.js'),
-                'jquery': path.resolve(__dirname, 'src/lib/jquery.min.js')
+                'jquery': path.resolve(__dirname, 'src/lib/jquery.2.1.4.min.js')
             }
         },
         plugins: [
@@ -283,8 +288,8 @@ module.exports=function (options) {
             except: [ '$', 'exports', 'require'] //排除关键字
         })
     ] : [
-        // new webpack.HotModuleReplacementPlugin(),
-        // new webpack.NoErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
     ]);
 
     // 设置提取css插件，只在build提取

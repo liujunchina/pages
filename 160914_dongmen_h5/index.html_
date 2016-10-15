@@ -159,8 +159,8 @@
             <p>正在上传，请稍等...</p>
         </div>
     </div>
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>-->
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.2.1.4.min.js"></script>
+    <!--<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.2.1.4.min.js"></script>-->
     <script type="text/javascript" src="./js/jquery.form.js"></script>
     <script type="text/javascript" src="./js/swiper.min.js"></script>
     <script type="text/javascript" src="./js/swiper.animate1.0.2.min.js"></script>

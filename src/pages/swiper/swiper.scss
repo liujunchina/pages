@@ -2,19 +2,19 @@
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  //&:nth-child(1) {
-  //  background-image: url("./img/zhiling1.jpg");
-  //}
-  //&:nth-child(2) {
-  //  background-image: url("./img/zhiling3.jpg");
-  //}
-  //&:nth-child(3) {
-  //  background-image: url("./img/zhiling1.jpg");
-  //}
-  //&:nth-child(4) {
-  //  background-image: url("./img/zhiling3.jpg");
-  //}
-  //&:nth-child(5) {
-  //  background-image: url("./img/zhiling1.jpg");
-  //}
+  &:nth-child(1) {
+    background-image: url("./img/zhiling1.jpg");
+  }
+  &:nth-child(2) {
+    background-image: url("./img/zhiling3.jpg");
+  }
+  &:nth-child(3) {
+    background-image: url("./img/zhiling1.jpg");
+  }
+  &:nth-child(4) {
+    background-image: url("./img/zhiling3.jpg");
+  }
+  &:nth-child(5) {
+    background-image: url("./img/zhiling1.jpg");
+  }
 }
