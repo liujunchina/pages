@@ -288,8 +288,8 @@ module.exports=function (options) {
             except: [ '$', 'exports', 'require'] //排除关键字
         })
     ] : [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
+        // new webpack.NoErrorsPlugin(),
     ]);
 
     // 设置提取css插件，只在build提取
