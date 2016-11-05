@@ -245,9 +245,6 @@ module.exports=function (options) {
                 Cookie: 'cookie' // cookie
                  */
             }),
-            new webpack.optimize.OccurenceOrderPlugin(),
-            new webpack.optimize.DedupePlugin()
-
         ].concat(htmlWebpackPluginConfig),
         //使用webpack-dev-server，提高开发效率
         //启用热服务有两种 如果是 api 启动方式, 这里只是一个配置目录,不会被webpack读取,
@@ -279,14 +276,19 @@ module.exports=function (options) {
         new ExtractTextPlugin('css/[name].css?[contenthash]', {
             allChunks: true
         }),
-        new UglifyJsPlugin({ //压缩代码
-            sourceMap: false,
-            drop_console: true,
-            compress: {
-                warnings: false
-            },
-            except: [ '$', 'exports', 'require'] //排除关键字
-        })
+        // new UglifyJsPlugin({ //压缩代码
+        //     sourceMap: false,
+        //     compress: {
+        //         warnings: false,
+        //         drop_console: true,
+        //         drop_debugger: true,
+        //     },
+        //     mangle: {
+        //         except: ['$super', '$', 'exports', 'require'] //排除关键字
+        //     }
+        // }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin()
     ] : [
         // new webpack.HotModuleReplacementPlugin(),
         // new webpack.NoErrorsPlugin(),
