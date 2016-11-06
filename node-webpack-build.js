@@ -5,6 +5,7 @@
 var webpack = require("webpack");
 var config = require('./config.pro.js');
 var compiler = webpack(config);
+var gulpTask = require('./config.gulp.base');
 
 // webpack
 compiler.run(function(err, stats) {
@@ -13,7 +14,6 @@ compiler.run(function(err, stats) {
         console.error('不知道什么错误的错误!!!');
         return ;
     }
-
     var jsonStats = stats.toJson();
 
     if (jsonStats.errors.length > 0){
@@ -28,10 +28,10 @@ compiler.run(function(err, stats) {
             console.warn('\n警告！' + v);
         });
     }
-
-    console.log('\n构建成功 !');
+    console.log('\n->webpack 编译成功 end ..');
+    console.log('\n->gulp 压缩文件 start... ');
+    gulpTask.compressCssJsHtml();
 });
 
 // gulp run
-var gulpTask = require('./config.gulp.base');
-gulpTask({debug:false});
+gulpTask.copyDir();

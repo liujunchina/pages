@@ -1,0 +1,17 @@
+<div class="plate-wrap" id="app">
+    <div class="bg-img">
+        <img src="./imgs/banner1.jpg" alt=""/>
+        <img src="./imgs/banner2.jpg" alt=""/>
+    </div>
+    <div class="plate">
+        <div class="rotate-bg">
+            <img src="./imgs/plate.png" alt="转盘" v-el:plate/>
+            <div class="lotter-start-bg">
+                <img class="lotter-start-bgimg" src="./imgs/rotate-static-bg.png" alt="指针"/>
+                <div class="go-btn" @click="onPlay">
+                    <img src="./imgs/go-btn.png" alt="启动按钮"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
