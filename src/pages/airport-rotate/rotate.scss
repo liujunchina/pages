@@ -1,0 +1,45 @@
+.plate-wrap {
+  position: relative;
+  .bg-img {
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: top;
+    }
+  }
+  .plate {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    left: 50%;
+    margin-left: -260px;
+    top: 44.5%;
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: top;
+    }
+  }
+  .rotate-bg {
+    position: relative;
+  }
+  .lotter-start-bgimg {
+    pointer-events: none;
+  }
+  .lotter-start-bg {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .go-btn {
+    position: absolute;
+    width: 148px;
+    height: 148px;
+    margin-top: -74px;
+    margin-left: -74px;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+  }
+}

@@ -26,8 +26,7 @@ var app = new Vue({
             }).done(function () {
                 debugger
             }).always(()=>{
-
-                let baseDeg = 36;
+                let baseDeg = 45;
                 let roData = [];
                 for(let i = 0; i<9; i++){
                     roData.push(360 - baseDeg * i);
