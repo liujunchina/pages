@@ -31,7 +31,7 @@
 
         setStyle : function(){
             var self = this;
-            this.elm.style[supportedCSS]= "rotate("+(this.config.animateTo)+"deg)";
+            this.elm.style[supportedCSS]= "translateZ(0) rotate("+(this.config.animateTo)+"deg)";
             this.elm.style[supportedCSSTransition] = "all " +(this.config.duration / 1000)+ "s ease";
 
             if (this.timer) clearTimeout(this.timer);
@@ -44,7 +44,7 @@
             var self = this;
             // 清空样式
             this.elm.style[supportedCSSTransition] = "none";
-            this.elm.style[supportedCSS]= "rotate("+(this.config.animateTo%360)+"deg)";
+            this.elm.style[supportedCSS]= "translateZ(0) rotate("+(this.config.animateTo%360)+"deg)";
             if(self.config.callback) self.config.callback();
         }
     };
