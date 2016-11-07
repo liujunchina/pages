@@ -6,6 +6,7 @@ require('./rotate.scss');
 require('commonjs/simpleRotate.jquery.js');
 
 import Vue from 'vue';
+import wxShare from 'commonjs/wx-share.js';
 
 var app = new Vue({
     el: '#app',
@@ -17,9 +18,7 @@ var app = new Vue({
     methods:{
         onPlay(event){
             if(this.isRequesting) return false;
-
             this.isRequesting = true;
-
             $.ajax({
                 url:'/fasdf',
                 type:'post'
@@ -41,6 +40,15 @@ var app = new Vue({
                 });
             });
         }
-
     }
+});
+
+// 设置微信分享
+wxShare({
+    'imgUrl': window.location.origin + '/xxxxxx.jpg',
+    'link': window.location.href,
+    'desc': 'xxxxxx',
+    'title': 'xxxxxxxxxxxxxxxxxx',
 })
+
+
