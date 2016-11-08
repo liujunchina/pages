@@ -266,10 +266,11 @@ module.exports=function (options) {
             },
             headers: { "X-Custom-Header": "yes" },
             proxy: {
-                // '/api/*': {
-                //     target: 'http://www.wandetech.com',
-                //     secure: false
-                // }
+                '\/airport\/*': {
+                    target: 'http://192.168.1.145',
+                    secure: false,
+                    changeOrigin: true
+                }
             }
         }
     };
@@ -314,6 +315,8 @@ module.exports=function (options) {
 
     // 设置 outPut
     !DEBUG && (config.output.filename = '[name].js?[chunkhash]');
+
+    // !DEBUG && (config.output.publicPath = '/airport/');
 
     return config
 };

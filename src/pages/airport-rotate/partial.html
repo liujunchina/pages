@@ -5,11 +5,28 @@
     </div>
     <div class="plate">
         <div class="rotate-bg">
-            <img src="./imgs/plate.png" alt="转盘" v-el:plate/>
+            <img src="./imgs/plate-none.png" alt="转盘" v-el:plate/>
             <div class="lotter-start-bg">
                 <img class="lotter-start-bgimg" src="./imgs/rotate-static-bg.png" alt="指针"/>
                 <div class="go-btn" @click="onPlay"></div>
             </div>
         </div>
     </div>
+    <button @click="onShowGiftList">查看我的中奖纪录</button>
+    <div class="gift-list">
+        <ul>
+            <li class="item" v-for="item in giftList">
+                <div class="item-name">{{item.name}}</div>
+                <div class="item-code">{{item.randcode}}</div>
+                <div class="item-time">{{item.nowday}}</div>
+            </li>
+        </ul>
+    </div>
+
+    <div v-show="isShowGift" @click="hideGift" class="gift-view">
+        <div class="layer-mask"></div>
+        <img :src="giftImg" class="gift-img" alt="">
+    </div>
 </div>
+
+
