@@ -21,7 +21,7 @@ function createTpl(options) {
                 let styleClass = options.style ==1 ? 'style-border' : 'style-2';
                 tempStr += `<div class="layer-tools ${styleClass}">`
                 $.each(tools, function (i, v) {
-                    tempStr += `<a href="javascript:;" class="j_layerBtn layer-btn ${v.class}">${v.text}</a>`
+                    tempStr += `<a href="javascript:;" data-index="${i}" class="j_layerBtn layer-btn ${v.class}">${v.text}</a>`
                 });
                 tempStr += '</div>'
             }
@@ -59,14 +59,13 @@ layer.msg = function (options) {
     let tpl = createTpl(options),
         $tpl = $(tpl);
 
-    $tpl.find('.j_layerBtn').each(function (i,v) {
-        $(v).on('click',function (event) {
-            debugger
-            options.tools[i] && options.tools[i].call(this,event);
-        });
-    });
+    $tpl.addClass('fadeIn').appendTo('body');
 
-    $(tpl).addClass('fadeIn').appendTo('body');
+    $tpl.find('.j_layerBtn').on('click',function () {
+        let index = $(this).data('index');
+        $tpl.remove();
+        options.tools[index]['onClick'] && options.tools[index]['onClick'].call(this,event);
+    });
 }
 
 layer.loading = function () {
