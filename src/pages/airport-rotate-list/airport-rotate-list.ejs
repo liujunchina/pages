@@ -11,15 +11,18 @@
     <div class="gift-list-viw">
         <div class="gift-list">
             <h4>你的中奖结果</h4>
-            <ul v-show="giftList.length > 0">
-                <li class="item" v-for="item in giftList">
-                    <div class="item-time">{{item.nowday}}</div>
-                    <div class="item-name">{{item.name}}</div>
-                    <div class="item-code">兑换码<span>{{item.randcode}}</span></div>
-                </li>
-            </ul>
-            <div class="nothing" v-show="giftList.length <= 0">
-                你还没有中过奖，请再接再厉
+            <div v-if="isLoading">
+                <ul v-show="giftList.length > 0">
+                    <li class="item" v-for="item in giftList">
+                        <div class="item-time">{{item.nowday}}</div>
+                        <div class="item-name">{{item.name}}</div>
+                        <div class="item-code">兑换码<span>{{item.randcode}}</span></div>
+                    </li>
+                </ul>
+                <div class="nothing" v-show="giftList.length <= 0">你还没有中过奖，请再接再厉</div>
+            </div>
+            <div v-if="!isLoading">
+                加载中...
             </div>
         </div>
         <div class="back">

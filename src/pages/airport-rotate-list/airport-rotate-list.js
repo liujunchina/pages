@@ -6,13 +6,12 @@ import Vue from 'vue';
 var app = new Vue({
     el: '#app',
     data: {
+        isLoading:false,
         giftList: []
     },
 });
 
 function init() {
-
-    return
     $.ajax({
         url: '/airport/Index/mygift.html',
         type: 'post'
@@ -24,6 +23,8 @@ function init() {
         }
     }).fail(()=>{
         alert('获取中奖纪录失败');
+    }).always(()=>{
+        app.isLoading = true;
     })
 }
 
