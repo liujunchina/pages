@@ -2,6 +2,7 @@
     <div class="bg-img">
         <img src="./imgs/banner1.jpg" alt=""/>
         <img src="./imgs/banner2.jpg" alt=""/>
+        <a href="airport-rotate-list.html"><img src="./imgs/shou.gif" class="shou" alt=""></a>
     </div>
     <div class="plate">
         <div class="rotate-bg">
@@ -11,16 +12,6 @@
                 <div class="go-btn" @click="onPlay"></div>
             </div>
         </div>
-    </div>
-    <button @click="onShowGiftList">查看我的中奖纪录</button>
-    <div class="gift-list">
-        <ul>
-            <li class="item" v-for="item in giftList">
-                <div class="item-name">{{item.name}}</div>
-                <div class="item-code">{{item.randcode}}</div>
-                <div class="item-time">{{item.nowday}}</div>
-            </li>
-        </ul>
     </div>
 
     <div v-show="isShowGift" @click="hideGift" class="gift-view">

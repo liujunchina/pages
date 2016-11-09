@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= require('html!../inc/heade-meta.ejs') %>
+    <title>北京首都国际机场</title>
+    <meta name="keywords" content="北京首都国际机场转盘抽奖" />
+    <meta name="description" content="北京首都国际机场转盘抽奖" />
+</head>
+<body>
+<div class="plate-wrap" id="app">
+    <div class="gift-list-viw">
+        <div class="gift-list">
+            <h4>你的中奖结果</h4>
+            <ul v-show="giftList.length > 0">
+                <li class="item" v-for="item in giftList">
+                    <div class="item-time">{{item.nowday}}</div>
+                    <div class="item-name">{{item.name}}</div>
+                    <div class="item-code">兑换码<span>{{item.randcode}}</span></div>
+                </li>
+            </ul>
+            <div class="nothing" v-show="giftList.length <= 0">
+                你还没有中过奖，请再接再厉
+            </div>
+        </div>
+        <div class="back">
+            <a href="airport-rotate.html" class="btn btn-back">返回抽奖页</a>
+        </div>
+    </div>
+</div>
+<%= require('html!../inc/footer-script.ejs') %>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</body>
+</html>
+

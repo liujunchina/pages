@@ -169,7 +169,7 @@ module.exports=function (options) {
                     loader: 'text-loader'
                 },
                 {
-                    test: /\.(png|jpg)$/,
+                    test: /\.(png|jpg|gif)$/,
                     loader: 'url-loader?limit=4096&name=images/[name]-[hash].[ext]'
                 },
                 {
@@ -316,7 +316,7 @@ module.exports=function (options) {
     // 设置 outPut
     !DEBUG && (config.output.filename = '[name].js?[chunkhash]');
 
-    // !DEBUG && (config.output.publicPath = '/airport/');
+    !DEBUG && (config.output.publicPath = '/airport/');
 
     return config
 };

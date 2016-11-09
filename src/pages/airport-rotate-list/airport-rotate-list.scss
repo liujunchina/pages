@@ -1,0 +1,70 @@
+body,html{
+  background-color: #ffffff !important;
+}
+.gift-list-viw{
+  padding: 20px;
+  .nothing{
+    color: #666666;
+  }
+  .back{
+    margin: 40px 0 0;
+    text-align: left;
+  }
+  .btn-back{
+    border-width: 0;
+    padding: 10px 150px;
+    font-size: 40px;
+    outline: none !important;
+    filter: none;
+    box-shadow: none;
+    text-shadow: none;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    appearance: none;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 8px 20px;
+    font-size: 24px; /*px*/
+    color: #FFF !important;
+    background-color: #4d90fa;
+  }
+  .gift-list{
+    color: #333333;
+    background-color: #ffffff;
+    h4{
+      font-size: 30px; /*px*/
+      font-weight: bolder;
+      margin-bottom: 30px;
+    }
+    .item{
+      border: 1px solid #cccccc; /*no*/
+      padding: 15px;
+      font-size: 24px; /*px*/
+      &>div{
+        margin: 10px 0;
+        &>span{
+          padding: 0 10px;
+        }
+      }
+    }
+    .item-time{
+
+    }
+    .item-name{
+      font-weight: bolder;
+    }
+    .item-code{
+      font-size: 30px;
+      font-weight: bolder;
+    }
+  }
+}

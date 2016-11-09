@@ -11,9 +11,6 @@ import wxShare from 'commonjs/wx-share.js';
 var app = new Vue({
     el: '#app',
     data:{
-        giftList:[] , // 中奖纪录
-        isShowGiftList:false, // 显示中奖纪录
-
         isShowGift:false,      // 显示中奖结果图片
         giftImg:''
     },
@@ -72,8 +69,6 @@ var app = new Vue({
                 url:'/airport/Index/lottery.html',
                 type:'post'
             }).done(({errCode,errMsg,obj})=>{
-                // errCode = 0;
-                // obj.img = '/images/banner1-64830d525699ca1c3789c341cae1d349.jpg';
                 if(errCode === 0){
                     let angle = this._getRotateAngle(obj.lotteryId);
                     $(this.$els.plate).simpleRotate({
@@ -96,22 +91,6 @@ var app = new Vue({
                 this.isRequesting = false;
                 alert('抽奖失败，请重试');
             });
-        },
-        onShowGiftList(){
-            $.ajax({
-                url: '/airport/Index/mygift.html',
-                type: 'post'
-            }).done(({errCode, errMsg, obj})=> {
-                if(errCode ===0){
-                    // list 显示抽奖结果
-                    this.giftList = obj;
-                    this.isShowGiftList = true;
-                }else{
-                    alert(errMsg);
-                }
-            }).fail(()=>{
-                alert('获取中奖纪录失败');
-            })
         },
         hideGift(){
             this.isShowGift = false;
