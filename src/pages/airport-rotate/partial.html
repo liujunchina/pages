@@ -2,7 +2,7 @@
     <div class="bg-img">
         <img src="./imgs/banner1.jpg" alt=""/>
         <img src="./imgs/banner2.jpg" alt=""/>
-        <a href="airport-rotate-list.html"><img src="./imgs/shou.gif" class="shou" alt=""></a>
+        <img @click="onShowGiftList" src="./imgs/shou.gif" class="shou" alt="">
     </div>
     <div class="plate">
         <div class="rotate-bg">
@@ -17,6 +17,28 @@
     <div v-show="isShowGift" @click="hideGift" class="gift-view">
         <div class="layer-mask"></div>
         <img :src="giftImg" class="gift-img" alt="">
+    </div>
+
+    <div v-show="isShowGiftList" @click="onHideGiftList" class="gift-view">
+        <div class="layer-mask"></div>
+        <div class="gift-list-viw">
+            <div class="gift-list">
+                <h4>你的中奖结果</h4>
+                <div v-if="isLoading">
+                    <ul v-show="giftList.length > 0">
+                        <li class="item" v-for="item in giftList">
+                            <div class="item-time">{{item.nowday}}</div>
+                            <div class="item-name">{{item.name}}</div>
+                            <div class="item-code">兑换码<span>{{item.randcode}}</span></div>
+                        </li>
+                    </ul>
+                    <div class="nothing" v-show="giftList.length <= 0">你还没有中过奖，请再接再厉</div>
+                </div>
+                <div v-if="!isLoading">
+                    加载中...
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

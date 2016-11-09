@@ -12,7 +12,10 @@ var app = new Vue({
     el: '#app',
     data:{
         isShowGift:false,      // 显示中奖结果图片
-        giftImg:''
+        isShowGiftList:false,   // 显示list
+        isLoading:false,
+        giftImg:'',
+        giftList:[]
     },
     methods:{
         _getRotateAngle(lotteryId){
@@ -94,6 +97,27 @@ var app = new Vue({
         },
         hideGift(){
             this.isShowGift = false;
+        },
+        onShowGiftList(){
+            this.isShowGiftList= true;
+            $.ajax({
+                url: '/airport/Index/mygift.html',
+                type: 'post'
+            }).done(({errCode, errMsg, obj})=> {
+                if(errCode ===0){
+                    this.giftList = obj;
+                }else{
+                    alert(errMsg);
+                }
+            }).fail(()=>{
+                alert('获取中奖纪录失败');
+            }).always(()=>{
+                this.isLoading = true;
+            })
+
+        },
+        onHideGiftList(){
+            this.isShowGiftList= false;
         }
     }
 });
