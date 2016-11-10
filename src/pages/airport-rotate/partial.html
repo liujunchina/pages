@@ -1,4 +1,4 @@
-<div class="plate-wrap" id="app">
+<div class="plate-wrap" v-cloak id="app">
     <div class="bg-img">
         <img src="./imgs/banner1.jpg" alt=""/>
         <img src="./imgs/banner2.jpg" alt=""/>
@@ -13,12 +13,10 @@
             </div>
         </div>
     </div>
-
     <div v-show="isShowGift" @click="hideGift" class="gift-view">
         <div class="layer-mask"></div>
         <img :src="giftImg" class="gift-img" alt="">
     </div>
-
     <div v-show="isShowGiftList" @click="onHideGiftList" class="gift-view">
         <div class="layer-mask"></div>
         <div class="gift-list-viw">
