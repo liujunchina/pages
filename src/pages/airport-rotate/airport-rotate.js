@@ -124,10 +124,10 @@ var app = new Vue({
 
 // 设置微信分享
 wxShare({
-    'imgUrl': require('./imgs/plate-none.png'),
+    'imgUrl': require('./imgs/share.jpg'),
     'link': window.location.href,
-    'desc': 'xxxxxx',
-    'title': 'xxxxxxxxxxxxxxxxxx',
+    'desc': '我在首都机场“双十一”幸运摇奖轮盘中赢了超值大奖，你也快来试试手气',
+    'title': '首都机场“双十一”幸运摇奖轮盘',
 })
 
 

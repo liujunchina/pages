@@ -14,12 +14,15 @@
   position: relative;
   .shou{
     position: absolute;
-    top:38%;
-    right: 14%;
-    width: 100px !important;
-    height: 100px !important;
-    animation: flash 4s infinite ease;
-    animation-fill-mode: both;
+    left: 50%;
+    width: 240px !important;
+    margin-left: -120px;
+    top:40%;
+
+
+    height: auto !important;
+    //animation: flash 4s infinite ease;
+    //animation-fill-mode: both;
   }
   .bg-img {
     img {
@@ -34,7 +37,7 @@
     height: 520px;
     left: 50%;
     margin-left: -260px;
-    top: 44.5%;
+    top: 46.5%;
     img {
       width: 100%;
       height: auto;
