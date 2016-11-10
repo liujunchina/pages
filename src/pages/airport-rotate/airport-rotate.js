@@ -114,7 +114,6 @@ var app = new Vue({
             }).always(()=>{
                 this.isLoading = true;
             })
-
         },
         onHideGiftList(){
             this.isShowGiftList= false;
