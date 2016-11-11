@@ -316,7 +316,7 @@ module.exports=function (options) {
     // 设置 outPut
     !DEBUG && (config.output.filename = '[name].js?[chunkhash]');
 
-    !DEBUG && (config.output.publicPath = '/airport/');
+    // !DEBUG && (config.output.publicPath = '/airport/');
 
     return config
 };
