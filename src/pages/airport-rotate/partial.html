@@ -9,7 +9,7 @@
             <img src="./imgs/plate-none.png" alt="转盘" v-el:plate/>
             <div class="lotter-start-bg">
                 <img class="lotter-start-bgimg" src="./imgs/rotate-static-bg.png" alt="指针"/>
-                <div class="go-btn" @click="onPlay"></div>
+                <div class="go-btn" @click="onPlay"></div>b
             </div>
         </div>
     </div>
@@ -17,8 +17,8 @@
         <div class="layer-mask"></div>
         <img :src="giftImg" class="gift-img" alt="">
     </div>
-    <div v-show="isShowGiftList" @click="onHideGiftList" class="gift-view">
-        <div class="layer-mask"></div>
+    <div v-show="isShowGiftList"  class="gift-view">
+        <div class="layer-mask" @click="onHideGiftList"></div>
         <div class="gift-list-viw">
             <div class="gift-list">
                 <h4>你的中奖结果</h4>
@@ -28,6 +28,7 @@
                             <div class="item-time">{{item.nowday}}</div>
                             <div class="item-name">{{item.name}}</div>
                             <div class="item-code">兑换码<span>{{item.randcode}}</span></div>
+                            <div class="item-view"><a :href="item.img" class="btn-back">查看兑奖说明</a></div>
                         </li>
                     </ul>
                     <div class="nothing" v-show="giftList.length <= 0">你还没有中过奖，请再接再厉</div>

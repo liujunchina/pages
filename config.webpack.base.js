@@ -267,7 +267,7 @@ module.exports=function (options) {
             headers: { "X-Custom-Header": "yes" },
             proxy: {
                 '\/airport\/*': {
-                    target: 'http://192.168.1.145',
+                    target: 'http://192.168.1.120',
                     secure: false,
                     changeOrigin: true
                 }

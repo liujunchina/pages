@@ -126,4 +126,32 @@
       }
     }
   }
+
+  .btn-back{
+    border-width: 0;
+    padding: 10px 150px;
+    font-size: 40px;
+    outline: none !important;
+    filter: none;
+    box-shadow: none;
+    text-shadow: none;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    appearance: none;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 6px 15px;
+    font-size: 22px; /*px*/
+    color: #FFF !important;
+    background-color: #4d90fa;
+  }
 }
