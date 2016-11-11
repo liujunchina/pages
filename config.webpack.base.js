@@ -295,6 +295,7 @@ module.exports=function (options) {
 
     // 设置提取css插件，只在build提取
     config.module.loaders = config.module.loaders.concat(DEBUG ? [
+
         {
             test: /\.css$/,
             loader: 'style!css!postcss'
