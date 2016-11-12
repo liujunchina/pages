@@ -265,13 +265,13 @@ module.exports=function (options) {
                 poll: 1000
             },
             headers: { "X-Custom-Header": "yes" },
-            proxy: {
-                '\/airport\/*': {
-                    target: 'http://192.168.1.120',
-                    secure: false,
-                    changeOrigin: true
-                }
-            }
+            // proxy: {
+            //     '\/airport\/*': {
+            //         target: 'http://192.168.1.120',
+            //         secure: false,
+            //         changeOrigin: true
+            //     }
+            // }
         }
     };
 
@@ -317,7 +317,7 @@ module.exports=function (options) {
     // 设置 outPut
     !DEBUG && (config.output.filename = '[name].js?[chunkhash]');
 
-    // !DEBUG && (config.output.publicPath = '/airport/');
+    !DEBUG && (config.output.publicPath = '/airport/');
 
     return config
 };
