@@ -1,0 +1,17 @@
+<div id="app">
+    <v-test :messages="messages" v-model="testModel" @updatelist="updateList"></v-test>
+
+    <p v-for="item in list">
+        {{item}}
+    </p>
+    <p>
+        testModel:{{testModel}}
+    </p>
+</div>
+
+
+<div id="app2" style="margin-top: 30px;">
+    <h2>test component v-model</h2>
+    <test-model v-model="list" :name="'liujun'"></test-model>
+    {{list}}
+</div>

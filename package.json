@@ -5,7 +5,7 @@
   "main": "index.js",
   "config": {
     "buildDir": "./build/",
-    "devHost": "192.168.1.128",
+    "devHost": "192.168.1.124",
     "devPort": 1008
   },
   "skin": "darkblue",

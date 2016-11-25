@@ -1,0 +1,114 @@
+<div id="app">
+    <section v-text="message" :title="message">
+        loading...
+    </section>
+    <section>
+        <p v-for="value in list">{{value.name}}</p>
+    </section>
+    <section>
+        <p>{{say}}</p>
+        <p><button v-on:click="reverseMessage">反转</button></p>
+    </section>
+    <section>
+        <input type="text" v-model="message">
+    </section>
+    <section>
+        <p v-for="item in list">
+            <todo-item v-bind:item="item"></todo-item>
+        </p>
+        <button v-on:click="pushList">push数组</button>
+        <button v-bind:disabled="true">disabled</button>
+    </section>
+    <section>
+        计算属性
+        <p>{{reversedMessage}}</p>
+        <p>{{reversedMessageFn()}}</p>
+    </section>
+    <section v-bind:class="{red:color}">
+        看我的颜色
+    </section>
+    <section v-bind:style="[styleObj,styleObj2]">
+        bind:style 哈哈哈哈哈哈哈哈
+    </section>
+    <section>
+        <div v-if="boolVal">
+            boolVal = 'true'
+        </div>
+        <div v-else>
+            boolVal = 'false'
+        </div>
+
+        <template v-if="boolVal">
+            <div>
+                我是文档碎片
+            </div>
+            <div>
+                我是文档碎片
+            </div>
+        </template>
+
+        <div>
+            <div v-show="boolVal">
+                v-show boolVal = 'true'
+            </div>
+            <div>
+                v-show boolVal = 'false'
+            </div>
+        </div>
+    </section>
+    <section>
+        <div>
+            <button @click="counter+=1">增加1</button>
+            <div>
+                这个按钮被点击了{{counter}}次
+            </div>
+        </div>
+    </section>
+    <section>
+        <div>
+            <h3>多选框</h3>
+            <input type="checkbox" value="xxxx" v-model="checked" id="checkbox">
+            <label for="checkbox">{{checked}}</label>
+        </div>
+        <div>
+            <input type="checkbox" value="liujun" id="liujun" v-model="checkedNames">
+            <label for="liujun">liujun</label>
+            <input type="checkbox" value="xxx" id="xxx" v-model="checkedNames">
+            <label for="xxx">xxx</label>
+            <input type="checkbox" value="ddd" id="ddd" v-model="checkedNames">
+            <label for="ddd">ddd</label>
+            <p>
+                <span>Checked names: {{ checkedNames.join('.') }}</span>
+            </p>
+        </div>
+        <div>
+            <h3>单选按钮</h3>
+            <input type="radio" value="liujun1" id="liujun1" v-model="radioNames">
+            <label for="liujun1">liujun1</label>
+            <input type="radio" value="xxx1" id="xxx1" v-model="radioNames">
+            <label for="xxx1">xxx1</label>
+            <p>
+                <span>Radio value: {{ radioNames }}</span>
+            </p>
+        </div>
+        <div>
+            <h3>select</h3>
+            <select v-model="selected" multiple>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+    </section>
+</div>
+
+<div id="app2">
+    <button @click="onToggle">切换</button>
+    <transition name="fade">
+        <div v-show="isShow">
+            简单动画演例子
+        </div>
+    </transition>
+
+</div>
