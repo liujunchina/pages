@@ -2,6 +2,70 @@
   animation-duration: 0.3s !important;
 }
 .popup-layer{
+  .layer-mask{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .layer-dialog {
+    position: fixed;
+    z-index: 5000;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .layer-title{
+      padding: 30px 50px;
+      strong{
+        font-weight: 400;
+        font-size: 34px; /*px*/
+      }
+    }
+    .layer-content{
+      padding: 0 50px 30px;
+      min-height: 80px; /*px*/
+      font-size: 28px; /*px*/
+      line-height: 1.3;
+      word-wrap: break-word;
+      word-break: break-all;
+      color: #999999;
+      &:first-child{
+        padding: 60px 50px;
+        color: #353535;
+      }
+    }
+    .layer-tools {
+      position: relative;
+      line-height: 90px; /*px*/
+      font-size: 34px; /*px*/
+      display: flex;
+
+    }
+    .layer-btn{
+      display: block;
+      flex: 1;
+      color: #3CC51F;
+      text-decoration: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      position: relative;
+    }
+    .layer-btn-default{
+      color: #353535;
+    }
+    .layer-btn-primary{
+      color: #0BB20C;
+    }
+  }
+
   // ios border样式
   &.style-border {
     .layer-tools {
@@ -85,72 +149,9 @@
       }
     }
   }
-
-  .layer-mask{
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-  }
-  .layer-dialog {
-    position: fixed;
-    z-index: 5000;
-    width: 80%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFFFFF;
-    text-align: center;
-    border-radius: 8px;
-    overflow: hidden;
-
-    .layer-title{
-      padding: 30px 50px;
-      strong{
-        font-weight: 400;
-        font-size: 34px; /*px*/
-      }
-    }
-    .layer-content{
-      padding: 0 50px 30px;
-      min-height: 80px; /*px*/
-      font-size: 28px; /*px*/
-      line-height: 1.3;
-      word-wrap: break-word;
-      word-break: break-all;
-      color: #999999;
-      &:first-child{
-        padding: 60px 50px;
-        color: #353535;
-      }
-    }
-    .layer-tools {
-      position: relative;
-      line-height: 90px; /*px*/
-      font-size: 34px; /*px*/
-      display: flex;
-
-    }
-    .layer-btn{
-      display: block;
-      flex: 1;
-      color: #3CC51F;
-      text-decoration: none;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      position: relative;
-    }
-    .layer-btn-default{
-      color: #353535;
-    }
-    .layer-btn-primary{
-      color: #0BB20C;
-    }
-  }
 }
 
+// 加载动画
 .load-spinner{
   margin: 0 auto;
   width: 60px;

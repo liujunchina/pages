@@ -18,8 +18,8 @@ function createTpl(options) {
         tools: function (tools) {
             let tempStr = '';
             if(tools && tools.length > 0){
-                tempStr += `<div class="layer-tools">`
-                $.each(tools, function (i, v) {
+                tempStr += `<div class="layer-tools">`;
+                tools.forEach((v,i) => {
                     tempStr += `<a href="javascript:;" data-index="${i}" class="j_layerBtn layer-btn ${v.class}">${v.text}</a>`
                 });
                 tempStr += '</div>'
@@ -81,16 +81,15 @@ let defaultOptions = {
 
 function removeMsg($msg,callBack) {
     $msg.addClass('fadeOut');
-    setTimeout(function () {
+    setTimeout(()=>{
         $msg.remove();
         callBack && callBack();
-    },300);
+    },300)
 }
 
 function showMsg($tpl) {
     $tpl.addClass('fadeIn').appendTo('body');
 }
-
 
 layer.msg = function (options) {
     options = $.extend({},defaultOptions,options);
@@ -104,22 +103,15 @@ layer.msg = function (options) {
     });
 }
 
-layer._tip = function ($tpl,options) {
-    showMsg($tpl);
-    setTimeout(function () {
-        $tpl.remove();
-        options.onClose && options.onClose();
-    },options.time);
-};
-
 layer.loading = function (options) {
+    if(this.$loading) return false;
     options = $.extend({
-        isShowMask: false,
-        time:5000
+        isShowMask: false
     },options,{
         title:'',
         tools:[],
-        style:20
+        style:20,
+        onClose:false,
     })
     let content = `<div class="load-spinner">
                         <div class="spinner-container container1">
@@ -145,8 +137,16 @@ layer.loading = function (options) {
     options.content = `${content}${toastContent}`;
 
     let tpl = createTpl(options);
-    this._tip($(tpl),options);
+    this.$loading = $(tpl)
+    showMsg(this.$loading);
 };
+
+layer.unLoading = function () {
+    if(this.$loading){
+        this.$loading.remove();
+        delete this.$loading
+    }
+}
 
 layer.layer = function (options) {
     options = $.extend({

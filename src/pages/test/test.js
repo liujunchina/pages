@@ -12,21 +12,24 @@
 
 let popLayer = require('commonjs/popup-layer/popup-layer.js');
 
-// let x = popLayer.msg({
-//     content: '测试内容测试内容测试内容内容可以是html',
-//     tools: [
-//         {
-//             class: 'layer-btn-primary',
-//             text: '确定'
-//         }
-//     ]
-// })
-
-// popLayer.loading({
-//     content:'加载中',
-//     time: 5000
-// })
-
-popLayer.layer({
-    content:' ',
+let x = popLayer.msg({
+    title:'测试内容',
+    content: '测试内容测试内容测试内容内容可以是html',
+    tools: [
+        {
+            class: 'layer-btn-primary',
+            text: '确定'
+        }
+    ]
 })
+
+// 保证只会同时加载一个 loading
+// popLayer.loading({
+//     content:'加载中'
+// })
+
+window.popLayer = popLayer;
+
+// popLayer.layer({
+//     content:' ',
+// })
