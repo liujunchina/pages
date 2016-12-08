@@ -22,6 +22,10 @@ var node_modules = path.resolve(__dirname, 'node_modules');
 var webpackHot='webpack/hot/dev-server';
 var webpackClient='webpack-dev-server/client?http://'+pkg.config.devHost+':'+pkg.config.devPort;
 
+
+// chunk 统一前缀，用于文件放在用一个文件夹，
+var prefixFolder = pkg.config.prefixFolder;
+
 /**
  * 获得路径
  * @param globPath: str
@@ -57,13 +61,13 @@ function getEntry(globPath, pathDir,isDebug) {
         pathname = pathname.replace(/\\/g,'/');
         outFileName = outFileName.replace(/\\/g,'/');
 
-        entries['webpack/' + outFileName] = ['./' + entry];
+        entries[prefixFolder + 'webpack/' + outFileName] = ['./' + entry];
         templates[pathname] = {
             skin:pkg.skin,
             chunks: [
                 // 'common/vue',
-                'common/common-lib',
-                'webpack/' + outFileName,
+                prefixFolder + 'common/common-lib',
+                prefixFolder + 'webpack/' + outFileName,
             ],
             filename: '' + outFileName + '.html',
             template: './src/pages/' + pathname + '.ejs',
@@ -129,7 +133,7 @@ module.exports=function (options) {
     var config = {
         entry: Object.assign(entries, {
             // 用到什么公共lib css（例如jquery.js），就把它加进common去，目的是将公用库单独提取打包
-            'common/common-lib': [
+            [prefixFolder + 'common/common-lib']: [
                 // 'jquery',  // jquery
                 'cookie',  // cookie
                 'base',    // 基础方法
@@ -170,7 +174,7 @@ module.exports=function (options) {
                 },
                 {
                     test: /\.(png|jpg|gif)$/,
-                    loader: 'url-loader?limit=4096&name=images/[name]-[hash].[ext]'
+                    loader: 'url-loader?limit=4096&name=' + prefixFolder + 'images/[name]-[hash].[ext]'
                 },
                 {
                     test: /\.html$/,
@@ -233,7 +237,7 @@ module.exports=function (options) {
             // }),
 
             new webpack.optimize.CommonsChunkPlugin({
-                names: ['common/common-lib'],
+                names: [prefixFolder + 'common/common-lib'],
                 minChunks: Infinity
             }),
 
@@ -277,17 +281,9 @@ module.exports=function (options) {
 
     // 提供公共js 压缩优化代码 只在build执行
     config.plugins = config.plugins.concat(!DEBUG ? [
-        new ExtractTextPlugin('css/[name].css?[contenthash]', {
+        new ExtractTextPlugin('[name].css?[contenthash]', {
             allChunks: true
         })
-        // new UglifyJsPlugin({ //压缩代码
-        //     sourceMap: false,
-        //     drop_console: true,
-        //     compress: {
-        //         warnings: false
-        //     },
-        //     except: [ '$', 'exports', 'require'] //排除关键字
-        // })
     ] : [
         // new webpack.HotModuleReplacementPlugin(),
         // new webpack.NoErrorsPlugin(),
@@ -316,8 +312,6 @@ module.exports=function (options) {
 
     // 设置 outPut
     !DEBUG && (config.output.filename = '[name].js?[chunkhash]');
-
-    !DEBUG && (config.output.publicPath = '/airport/');
 
     return config
 };

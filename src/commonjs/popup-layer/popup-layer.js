@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2016/11/8.
+ * Created by Liu.Jun on 2016/12/8.
  * 依赖 jquery ， 淘宝 flexible.js rem 计算
  * 样式模仿 微信小程序样式库
  */

@@ -6,7 +6,8 @@
   "config": {
     "buildDir": "./build/",
     "devHost": "192.168.5.89",
-    "devPort": 1008
+    "devPort": 1008,
+    "prefixFolder":"dist/"
   },
   "skin": "darkblue",
   "gulpConfig": {

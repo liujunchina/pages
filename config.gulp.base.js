@@ -8,7 +8,11 @@ var pkg = require('./package.json');
 var copyDir = pkg.gulpConfig.copyDir;
 var copyDirBasePath = pkg.gulpConfig.copyDirBasePath;
 var buildDir = pkg.config.buildDir;
-var compressCSSPath = ['css'];
+
+// chunk 统一前缀，用于文件放在用一个文件夹，
+var prefixFolder = pkg.config.prefixFolder;
+
+var compressCSSPath = ['common','webpack'];
 var compressJsPath = ['common','webpack'];
 
 // gulp
@@ -22,7 +26,7 @@ function srcList(list,ext) {
     var result = [];
     ext = ext || '.js';
     list.forEach(function (v) {
-        result.push(buildDir + v + '/**/**' + ext);
+        result.push(buildDir + prefixFolder + v + '/**/**' + ext);
     });
     console.log('--->' + ext + ' path: [ ' + result + ' ]');
     return result;
@@ -32,7 +36,7 @@ function srcList(list,ext) {
 gulp.task('copyStatic',function(){
     console.log('\n->复制静态文件');
     return gulp.src(copyDir, {base: copyDirBasePath})
-        .pipe(gulp.dest(buildDir));
+        .pipe(gulp.dest(buildDir + prefixFolder));
 });
 
 gulp.task('cleanBuild', function (cb) {
