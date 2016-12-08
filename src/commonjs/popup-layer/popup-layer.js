@@ -105,14 +105,17 @@ layer.msg = function (options) {
 
 layer.loading = function (options) {
     if(this.$loading) return false;
+
     options = $.extend({
-        isShowMask: false
+        isShowMask: false,
+        content:'加载中..'
     },options,{
         title:'',
         tools:[],
         style:20,
         onClose:false,
     })
+
     let content = `<div class="load-spinner">
                         <div class="spinner-container container1">
                             <div class="circle1"></div>
