@@ -283,6 +283,11 @@ module.exports=function (options) {
     config.plugins = config.plugins.concat(!DEBUG ? [
         new ExtractTextPlugin('[name].css?[contenthash]', {
             allChunks: true
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
         })
     ] : [
         // new webpack.HotModuleReplacementPlugin(),
