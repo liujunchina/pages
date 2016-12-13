@@ -10,6 +10,13 @@ body{
   margin: auto;
   background-color: #ffffff;
 }
+
+// flexible 单位偏小解决方案。
+body{
+  margin: 0 auto;
+  width: 10rem;
+}
+
 body,h1, h2, h3, h4, h5, h6{
   font-family: $font-face;
 }
