@@ -14,7 +14,9 @@ var wrapper = document.getElementById("signature-pad"),
     scale,
     init = false;
 
-
+const transformPx = function (num) {
+    return Number((num/scale).toFixed(4))
+};
 
 function initSignaturePad(width = 750,height = 1500) {
     // Adjust canvas coordinate space taking into account pixel ratio,
@@ -22,20 +24,19 @@ function initSignaturePad(width = 750,height = 1500) {
     // This also causes canvas to be cleared.
 
     scale = width/curWidth;
-    curHeight = height/scale;
+    curHeight = transformPx(height);
 
-
-
-
+    canvas.width = curWidth;
+    canvas.height = curHeight;
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
 
     function resizeCanvas() {
         // When zoomed out to less than 100%, for some very strange reason,
         // some browsers report devicePixelRatio as less than 1
         // and only part of the canvas is cleared then.
-        canvas.width = canvas.offsetWidth * ratio;
-        canvas.height = canvas.offsetHeight * ratio;
-        canvas.getContext("2d").scale(ratio, ratio);
+        // canvas.width = canvas.offsetWidth * ratio;
+        // canvas.height = canvas.offsetHeight * ratio;
+        // canvas.getContext("2d").scale(ratio, ratio);
     }
 
     window.onresize = resizeCanvas;
@@ -43,8 +44,7 @@ function initSignaturePad(width = 750,height = 1500) {
 
     signaturePad = new SignaturePad(canvas,{
         minWidth: 1,
-        maxWidth: 1,
-        penColor: "red"
+        maxWidth: 1
     });
 
     clearButton.addEventListener("click", function (event) {
@@ -82,12 +82,15 @@ websocket.onmessage = function ({data}) {
             init = true;
         }
 
+        point.x = transformPx(point.x);
+        point.y = transformPx(point.y);
+
         if(point.touchEvent === 0){
             // 重置画笔
-            // signaturePad.minWidth = data.penMinWidth;
-            // signaturePad.maxWidth = data.penMaxWidth;
-            // // signaturePad.penColor = data.penColor;
-            // signaturePad.dotSize = data.penWidth;
+            signaturePad.minWidth = transformPx(point.penMinWidth / 3);
+            signaturePad.maxWidth = transformPx(point.penMaxWidth / 3);
+            signaturePad.penColor = String(data.penColor).indexOf('#') > 0 ? String(data.penColor) : 'black';
+            // signaturePad.dotSize = point.penWidth / 5;
 
             signaturePad.actionDown(point);
 
