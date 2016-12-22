@@ -1,18 +1,36 @@
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module unless amdModuleId is set
-    define([], function () {
-      return (root['SignaturePad'] = factory());
-    });
-  } else if (typeof exports === 'object') {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory();
-  } else {
-    root['SignaturePad'] = factory();
-  }
-}(this, function () {
+(function ( factory) {
+
+    var registeredInModuleLoader = false;
+    if (typeof define === 'function' && define.amd) {
+        define(factory);
+        registeredInModuleLoader = true;
+    }
+
+    if (typeof exports === 'object') {
+        module.exports = factory();
+        registeredInModuleLoader = true;
+    }
+
+    if (!registeredInModuleLoader) {
+        window['SignaturePad'] = factory();
+    }
+
+    /**  默认加载
+      if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module unless amdModuleId is set
+        define([], function () {
+          return (root['SignaturePad'] = factory());
+        });
+      } else if (typeof exports === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory();
+      } else {
+        root['SignaturePad'] = factory();
+      }
+     **/
+}(function () {
 
 /*!
  * Signature Pad v1.5.2
@@ -74,6 +92,8 @@ var SignaturePad = (function (document) {
                 self._strokeEnd(event);
             }
         };
+
+        /// -----
 
         this._handleTouchStart = function (event) {
             if (event.targetTouches.length == 1) {
@@ -211,12 +231,37 @@ var SignaturePad = (function (document) {
         this._ctx.fillStyle = this.penColor;
     };
 
+
+    SignaturePad.prototype.actionDown = function (point) {
+        // this._strokeBegin(point);
+        this._strokeBegin(point);
+    };
+    SignaturePad.prototype.actionUp = function (point) {
+        this._strokeEnd(point);
+    }
+    SignaturePad.prototype.actionMove = function (point) {
+        this._strokeUpdate(point);
+    }
+
+    SignaturePad.prototype._checkIsEvent = function (event) {
+        return !!event.clientX;
+    }
+
     SignaturePad.prototype._createPoint = function (event) {
-        var rect = this._canvas.getBoundingClientRect();
-        return new Point(
-            event.clientX - rect.left,
-            event.clientY - rect.top
-        );
+        // 区分事件或者手动传入坐标点信息
+        if(this._checkIsEvent(event)){
+            var rect = this._canvas.getBoundingClientRect();
+            return new Point(
+                event.clientX - rect.left,
+                event.clientY - rect.top
+            );
+        }else{
+            return new Point(
+                event.x,
+                event.y,
+                event.time
+            );
+        }
     };
 
     SignaturePad.prototype._addPoint = function (point) {

@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="css/signature-pad.css">
 </head>
 <body onselectstart="return false">
 <div id="signature-pad" class="m-signature-pad">
@@ -16,8 +15,10 @@
     </div>
     <div class="m-signature-pad--footer">
         <div class="description">Sign above</div>
-        <button type="button" class="button clear" data-action="clear">Clear</button>
-        <button type="button" class="button save" data-action="save">Save</button>
+        <button type="button" class="button clear" data-action="clear">清空</button>
+        <button type="button" style="left: 50px" class="button clear" data-action="plus">宽度+</button>
+        <button type="button" style="left: 100px" class="button clear" data-action="less">宽度-</button>
+        <button type="button" class="button save" data-action="save">保存</button>
     </div>
 </div>
 </body>
