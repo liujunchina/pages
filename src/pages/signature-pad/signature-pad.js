@@ -87,8 +87,8 @@ websocket.onmessage = function ({data}) {
 
         if(point.touchEvent === 0){
             // 重置画笔
-            signaturePad.minWidth = transformPx(point.penMinWidth / 3);
-            signaturePad.maxWidth = transformPx(point.penMaxWidth / 3);
+            signaturePad.minWidth = transformPx(point.penMinWidth);
+            signaturePad.maxWidth = transformPx(point.penMaxWidth);
             signaturePad.penColor = String(data.penColor).indexOf('#') > 0 ? String(data.penColor) : 'black';
             // signaturePad.dotSize = point.penWidth / 5;
 

@@ -1,0 +1,20 @@
+html,body {
+  width: 100%;
+  max-width: 100%;
+}
+
+.m-signature-pad ,.tools{
+  margin: 0 auto;
+  border: 1px solid #cccccc;
+  padding: 30px 0; /*no*/
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.element {
+  margin: 0 auto;
+  border: 1px solid red;
+  display: block;
+  width: 446px; /*no*/
+  height: auto; /*no*/
+}
