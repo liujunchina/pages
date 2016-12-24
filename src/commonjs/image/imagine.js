@@ -68,11 +68,11 @@ function _color({ctx,imageData,data}) {
     _grayscale({ctx, imageData, data});
 
     // 叠加颜色
-    const color = '#008000';
+    const color = [74, 44, 218];
 
     // 在当前灰度内
     const minThreshold = 0;
-    const maxThreshold = 100;
+    const maxThreshold = 200;
 
     // 对应表的渐变色
     const gradientColor = new GradientColor([255,255,255],color,256);
