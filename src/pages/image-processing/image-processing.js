@@ -19,17 +19,17 @@ elmGray.addEventListener('click',function () {
         console.error(`出错了${error}`);
     });
 
-    Imagine.gray2(elImage.src).then((canvas) => {
-        document.querySelectorAll('.j_result2')[0].src = canvas.toDataURL();
-    }, (error) => {
-        console.error(`出错了${error}`);
-    });
+    // Imagine.gray2(elImage.src).then((canvas) => {
+    //     document.querySelectorAll('.j_result2')[0].src = canvas.toDataURL();
+    // }, (error) => {
+    //     console.error(`出错了${error}`);
+    // });
 
 },false);
 
 document.getElementById('j_invert').addEventListener('click',function () {
     Imagine.invert(elImage.src).then((canvas) => {
-        document.querySelectorAll('.j_result3')[0].src = canvas.toDataURL();
+        document.querySelectorAll('.j_result')[0].src = canvas.toDataURL();
     }, (error) => {
         console.error(`出错了${error}`);
     });
@@ -37,7 +37,7 @@ document.getElementById('j_invert').addEventListener('click',function () {
 
 elmRed.addEventListener('click',function () {
     Imagine.color(elImage.src).then((canvas) => {
-        document.querySelectorAll('.j_result4')[0].src = canvas.toDataURL();
+        document.querySelectorAll('.j_result')[0].src = canvas.toDataURL();
     }, (error) => {
         console.error(`出错了${error}`);
     });

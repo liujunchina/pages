@@ -3,12 +3,13 @@
  */
 
 
+const GradientColor = require('./gradientColor')
+
 const TYPE = {
     grayscale : 1,  // 灰度
     grayscale2: 11, // 灰度2
     invert : 2,     // 倒置
     color : 3,     //  叠加颜色
-
 }
 
 function _grayscale({ctx,imageData,data}) {
@@ -67,14 +68,31 @@ function _color({ctx,imageData,data}) {
     // 叠加颜色
     const color = [255,0,0];
 
+    // 在当前灰度内
+    const minThreshold = 0;
+    const maxThreshold = 100;
 
-
+    // 对应表的渐变色
+    const gradientColor = new GradientColor([255,255,255],color,256);
 
     for (var i = 0; i < data.length; i += 4) {
-        data[i]     = data[i] + (color[0] - data[i]) / 255 * ((255 / 100) * data[i+4]);     // red
-        data[i + 1] = data[i+1] + (color[1] - data[i+1]) / 255 * ((255 / 100) * data[i+4]); // green
-        data[i + 2] = data[i+2] + (color[2] - data[i+2]) / 255 * ((255 / 100) * data[i+4]); // blue
+        if(data[i]>=minThreshold && data[i]<= maxThreshold){
+            let rgbArr = gradientColor[255-data[i]];
+            data[i] =  rgbArr[0]    // red
+            data[i+1] =  rgbArr[1]  // green
+            data[i+2] =  rgbArr[2]  // blue
+
+        }else{
+            data[i] = data[i + 1] = data[i + 2] = 255;
+        }
     }
+
+    // 颜色叠加
+    // for (var i = 0; i < data.length; i += 4) {
+    //     data[i]     = data[i] + (color[0] - data[i]) / 255 * ((255 / 100) * data[i+4]);     // red
+    //     data[i + 1] = data[i+1] + (color[1] - data[i+1]) / 255 * ((255 / 100) * data[i+4]); // green
+    //     data[i + 2] = data[i+2] + (color[2] - data[i+2]) / 255 * ((255 / 100) * data[i+4]); // blue
+    // }
     ctx.putImageData(imageData, 0, 0);
 }
 
@@ -116,7 +134,7 @@ function getDrawCanvas(imgObj,type=TYPE.grayscale) {
 
         case TYPE.color:
             _grayscale({ctx, imageData, data});
-            // _color({ctx, imageData, data});
+            _color({ctx, imageData, data});
             break;
 
         default:
