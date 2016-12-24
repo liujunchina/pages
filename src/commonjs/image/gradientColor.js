@@ -23,7 +23,7 @@ function GradientColor(startColor,endColor,step){
     const colorArr = [];
     for(let i=0;i<step;i++){
         //计算每一步的hex值
-        // 转换不明白，所以取消了 -- Liu.Jun
+        // 无需转换 所以取消了 -- Liu.Jun
         // let hex = this.colorHex('rgb('+parseInt((sR*i+startR))+','+parseInt((sG*i+startG))+','+parseInt((sB*i+startB))+')');
         let hex = [parseInt((sR*i+startR)),parseInt((sG*i+startG)),parseInt((sB*i+startB))];
         colorArr.push(hex);

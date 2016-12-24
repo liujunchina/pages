@@ -2,7 +2,6 @@
  * Created by Liu.Jun on 2016/12/23.
  */
 
-
 const GradientColor = require('./gradientColor')
 
 const TYPE = {
@@ -65,8 +64,11 @@ function _invert({ctx,imageData,data}) {
 }
 
 function _color({ctx,imageData,data}) {
+    // 先灰度
+    _grayscale({ctx, imageData, data});
+
     // 叠加颜色
-    const color = [255,0,0];
+    const color = '#008000';
 
     // 在当前灰度内
     const minThreshold = 0;
@@ -81,13 +83,12 @@ function _color({ctx,imageData,data}) {
             data[i] =  rgbArr[0]    // red
             data[i+1] =  rgbArr[1]  // green
             data[i+2] =  rgbArr[2]  // blue
-
         }else{
             data[i] = data[i + 1] = data[i + 2] = 255;
         }
     }
 
-    // 颜色叠加
+    // 颜色直接叠加
     // for (var i = 0; i < data.length; i += 4) {
     //     data[i]     = data[i] + (color[0] - data[i]) / 255 * ((255 / 100) * data[i+4]);     // red
     //     data[i + 1] = data[i+1] + (color[1] - data[i+1]) / 255 * ((255 / 100) * data[i+4]); // green
@@ -133,7 +134,6 @@ function getDrawCanvas(imgObj,type=TYPE.grayscale) {
             break;
 
         case TYPE.color:
-            _grayscale({ctx, imageData, data});
             _color({ctx, imageData, data});
             break;
 
