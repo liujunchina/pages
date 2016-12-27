@@ -72,7 +72,7 @@ function _color({ctx,imageData,data}) {
 
     // 在当前灰度内
     const minThreshold = 0;
-    const maxThreshold = 200;
+    const maxThreshold = 100;
 
     // 对应表的渐变色
     const gradientColor = new GradientColor([255,255,255],color,256);
