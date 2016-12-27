@@ -84,6 +84,7 @@ function _color({ctx,imageData,data}) {
             data[i+1] =  rgbArr[1]  // green
             data[i+2] =  rgbArr[2]  // blue
         }else{
+
             data[i] = data[i + 1] = data[i + 2] = 255;
         }
     }
