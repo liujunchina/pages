@@ -68,11 +68,11 @@ function _color({ctx,imageData,data}) {
     _grayscale({ctx, imageData, data});
 
     // 叠加颜色
-    const color = [74, 44, 218];
+    const color = '#376956';
 
     // 在当前灰度内
     const minThreshold = 0;
-    const maxThreshold = 127;
+    const maxThreshold = 200;
 
     // 对应表的渐变色
     const gradientColor = new GradientColor([255,255,255],color,256);
@@ -84,7 +84,6 @@ function _color({ctx,imageData,data}) {
             data[i+1] =  rgbArr[1]  // green
             data[i+2] =  rgbArr[2]  // blue
         }else{
-
             data[i] = data[i + 1] = data[i + 2] = 255;
         }
     }
