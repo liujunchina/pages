@@ -17,7 +17,7 @@
   "scripts": {
     "server": "cd build & http-server -p 3000",
     "dev": "node node-dev-server",
-    "bug": "webpack-dev-server --config ./config.dev --hot --inline --devtool eval --progress --colors --content-base build",
+    "bug": "webpack-dev-server --config ./config.dev --open --hot --inline --devtool eval --progress --colors --content-base build",
     "build": "node node-webpack-build ./config.pro",
     "watch": "webpack --watch --config ./config.dev",
     "bie": "webpack ---watch --config ./config.pro",

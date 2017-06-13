@@ -9,17 +9,7 @@
 </head>
 <body>
 <div class="wrap">
-    <%= require('./partial.html') %>
-    <div class="liujun">
-        https://mp.weixin.qq.com/debug/wxadoc/dev/api/notice.html?t=20161122
-    </div>
-    <pre>
-        改动过.gitignore文件之后，在repo的根目录下运行：
-        git rm -r --cached .
-        git add .
-        之后可以进行提交：
-        git commit -m "fixed untracked files"
-    </pre>
+    <div id="app"></div>
 </div>
 <%= require('html!../inc/footer-script.ejs') %>
 </body>
